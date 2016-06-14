@@ -114,7 +114,7 @@ public class OrderPricerTest
         shippingQuoteProvider.setState(ShippingQuoteProviderMock.State.externalRequirementsMet);
 
         assertEquals(888.88, orderPricer.getOrderCost(new OrderPricer.GetOrderCostRequest
-            (new Order(createNormalPerson(), new TreeMap<String, Integer> ()))).getCost(),1e-7);
+            (new Order(createNormalPerson(), new TreeMap<String, Order.Item> ()))).getCost(),1e-7);
     }
 
     @Test(expected=RequestNotValidException.class)
@@ -138,11 +138,11 @@ public class OrderPricerTest
     }
 
 
-    private static Map<String, Integer> createDefaultOrderItems()
+    private static Map<String, Order.Item> createDefaultOrderItems()
     {
-        Map<String, Integer> orderItems = new TreeMap<String, Integer>();
-        orderItems.put("jam", 5);
-        orderItems.put("rooibosTea", 1);
+        Map<String, Order.Item> orderItems = new TreeMap<String, Order.Item>();
+        orderItems.put("jam", new Order.Item("jam", 5, 12.5));
+        orderItems.put("rooibosTea", new Order.Item("rooibosTea", 1, 20));
         return orderItems;
     }
 

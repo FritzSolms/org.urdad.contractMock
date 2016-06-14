@@ -12,35 +12,31 @@ import org.urdad.services.validation.beanvalidation.ServiceValidationUtilities;
 public class OrderPricerBean implements OrderPricer
 {
 
-	@Override
-	public GetOrderCostResponse getOrderCost(GetOrderCostRequest request) throws RequestNotValidException,
-        ShippingQuoteProvider.DoNotShipToAddressException, ItemPricer.ItemNotAvailableException, ShippingQuoteProvider.RailwayOnStrikeException
-	{
+    @Override
+    public GetOrderCostResponse getOrderCost(GetOrderCostRequest request) throws RequestNotValidException,
+    ShippingQuoteProvider.DoNotShipToAddressException, ItemPricer.ItemNotAvailableException, ShippingQuoteProvider.RailwayOnStrikeException
+    {
         // Check pre-condition: Request must be valid.
         serviceValidationUtilities.validateRequest(GetOrderCostRequest.class, request);
 
-        Map<String,Integer> orderItems = request.getOrder().getOrderItems();
+        Map<String,Order.Item> orderItems = request.getOrder().getOrderItems();
         double total = 0;
 
         for (String itemCode : orderItems.keySet())
         {
-        	ItemPricer.GetItemPriceRequest req = new ItemPricer.GetItemPriceRequest(request.getOrder().getBuyer(),
-                itemCode);
-        	total += itemPricer.getItemPrice(req).getPrice() * orderItems.get(itemCode);
+            ItemPricer.GetItemPriceRequest req = new ItemPricer.GetItemPriceRequest(request.getOrder().getBuyer(),
+            itemCode);
+            total += itemPricer.getItemPrice(req).getPrice() * orderItems.get(itemCode).getQuantity();
         }
-        
+
         Address shippingAddress = request.getOrder().getBuyer().getAddress();
-    	total += shippingQuoteProvider.getShippingQuote
-    		(new ShippingQuoteProvider.GetShippingQuoteRequest(shippingAddress)).getPrice();
-    	
-		return new GetOrderCostResponse(total);
-	}
+        total += shippingQuoteProvider.getShippingQuote
+                (new ShippingQuoteProvider.GetShippingQuoteRequest(shippingAddress)).getPrice();
 
-    @Inject
-    private ServiceValidationUtilities serviceValidationUtilities;
-    @Inject
-    private ItemPricer itemPricer;
-    @Inject
-    private ShippingQuoteProvider shippingQuoteProvider;
+        return new GetOrderCostResponse(total);
+    }
 
+    @Inject private ServiceValidationUtilities serviceValidationUtilities;
+    @Inject private ItemPricer itemPricer;
+    @Inject private ShippingQuoteProvider shippingQuoteProvider;
 }

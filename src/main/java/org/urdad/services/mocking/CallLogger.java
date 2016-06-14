@@ -3,7 +3,6 @@ package org.urdad.services.mocking;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import org.urdad.services.ServiceUtilities.NotAServiceException;
 import org.urdad.services.messaging.Request;
 
 /**
