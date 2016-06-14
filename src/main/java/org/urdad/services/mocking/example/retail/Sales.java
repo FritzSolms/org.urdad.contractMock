@@ -13,31 +13,30 @@ import org.urdad.services.messaging.Response;
 
 import org.urdad.services.mocking.example.finance.InsufficientFundsException;
 import org.urdad.services.mocking.example.finance.CouldNotConnectToBankException;
-import org.urdad.services.mocking.example.finance.PaymentFailedException;
+import org.urdad.services.mocking.example.finance.CouldNotProcessPaymentException;
 import org.urdad.services.mocking.example.stockManagement.InsufficientStockException;
 import org.urdad.services.validation.RequestNotValidException;
 
 /**
- *
  * @author fritz@solms.co.za
  */
 public interface Sales {
     public ProcessOrderResponse processOrder(ProcessOrderRequest request)
-        throws RequestNotValidException, InsufficientStockException, PaymentFailedException;
+        throws RequestNotValidException, InsufficientStockException, CouldNotProcessPaymentException;
     
     public class ProcessOrderRequest implements Request
     {
         public ProcessOrderRequest(Order order) {this.order = order.clone();}
         public Order getOrder() {return order.clone();}
-        // Composition
-        private Order order;
+
+        @NotNull @Valid private Order order;
+        @NotNull @Valid private PaymentMethod paymentMethod;
     }
     
     public class ProcessOrderResponse implements Response
     {
 //        @NotNull @Valid
 //        private Receipt receipt;
-        @NotNull @NotEmpty
-        private String packageId;
+        @NotNull @NotEmpty private String packageId;
     }
 }

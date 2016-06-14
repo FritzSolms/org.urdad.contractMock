@@ -20,7 +20,7 @@ public class StockManagementMock extends BaseMock implements StockManagement
     /**
      * Returns a reservation response with a reservation id of "111" if the order
      * does not contain more than one
-     * @param request The reservation request
+     * @param request The stock reservation request
      * @return A reservation confirmation with a reservation number of "111"
      * @throws InsufficientStockException if the order contains more than 5 items of jam
      */
@@ -28,6 +28,9 @@ public class StockManagementMock extends BaseMock implements StockManagement
     public ReserveStockResponse reserveStock(ReserveStockRequest request) 
             throws RequestNotValidException, InsufficientStockException {
         serviceValidationUtilities.validateRequest(ReserveStockRequest.class, request);
+        if (request.getRequiredStockItems().get("jam") > 5)
+            throw new InsufficientStockException();
+        else return new ReserveStockResponse("111");
     }
 
     @Override
@@ -39,4 +42,9 @@ public class StockManagementMock extends BaseMock implements StockManagement
         return new IssueStockResponse();}
     
     @Inject private ServiceValidationUtilities serviceValidationUtilities;    
+
+    @Override
+    public OrderStockResponse orderStock(OrderStockRequest request) throws RequestNotValidException {
+        return new OrderStockResponse("222");
+    }
 }

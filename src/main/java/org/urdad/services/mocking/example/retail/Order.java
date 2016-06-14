@@ -1,16 +1,12 @@
 package org.urdad.services.mocking.example.retail;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.PostConstruct;
 
 import javax.validation.Valid;
 import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.urdad.services.mocking.example.Person;
@@ -37,12 +33,7 @@ public class Order implements Cloneable
         return copy;}
 
     @NotNull @Valid private Person buyer;
-    @NotNull @Valid private PaymentMethod paymentMethod;
     @NotEmpty @Valid private Map<String,Item> orderItems = new HashMap<String,Item>();
-    
-    public static abstract class PaymentMethod {}
-    
-    public static class AccountPayment extends PaymentMethod{}
     
     public static class Item implements Cloneable
     {
@@ -61,16 +52,4 @@ public class Order implements Cloneable
         @DecimalMin("0.0") private double unitPrice;
     }
     
-    public static class CreditCardPayment extends PaymentMethod
-    {
-        public CreditCardPayment(String cardNo, String name, Date cardExpiryDate)
-        {
-            this.name = name; 
-            this.cardNo = cardNo;
-            this.cardExpiryDate = (Date)cardExpiryDate.clone();
-        }
-        @NotNull @NotEmpty private String name;
-        @Future private Date cardExpiryDate;
-        @Pattern(regexp="{(\\d{4}}( \\d{4}}){3})") private String cardNo;
-    }
 }
