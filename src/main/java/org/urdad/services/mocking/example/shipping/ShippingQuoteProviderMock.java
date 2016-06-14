@@ -22,31 +22,29 @@ import org.urdad.services.validation.beanvalidation.ServiceValidationUtilities;
 @Service
 public class ShippingQuoteProviderMock extends BaseMock implements ShippingQuoteProvider
 {
-	public ShippingQuoteProviderMock() 
-		{setState(State.externalRequirementsMet);}
-	
-	public GetShippingQuoteResponse getShippingQuote(GetShippingQuoteRequest request) 
-			throws RequestNotValidException, DoNotShipToAddressException, RailwayOnStrikeException
-	{
-        // Check pre-condition: Request must be valid.
-        serviceValidationUtilities.validateRequest(GetShippingQuoteRequest.class, request);
-        
-		if (getState() == State.railwayOnStrike)
-			throw new RailwayOnStrikeException();
-		
-		if (request.getAddress().getCity().trim().toLowerCase().equals("timbuktu"))
-			throw new DoNotShipToAddressException();
-		
-		if (request.getAddress().getCity().trim().toLowerCase().equals("pofadder"))
-			return new GetShippingQuoteResponse(0);
-		else
-			return new GetShippingQuoteResponse(888.88);
-		
-	}
-	
-	public enum State implements Mock.State{externalRequirementsMet, railwayOnStrike}
+    public ShippingQuoteProviderMock() 
+            {setState(State.externalRequirementsMet);}
+
+    public GetShippingQuoteResponse getShippingQuote(GetShippingQuoteRequest request) 
+                    throws RequestNotValidException, DoNotShipToAddressException, RailwayOnStrikeException
+    {
+    // Check pre-condition: Request must be valid.
+    serviceValidationUtilities.validateRequest(GetShippingQuoteRequest.class, request);
+
+        if (getState() == State.railwayOnStrike)
+                throw new RailwayOnStrikeException();
+
+        if (request.getAddress().getCity().trim().toLowerCase().equals("timbuktu"))
+                throw new DoNotShipToAddressException();
+
+        if (request.getAddress().getCity().trim().toLowerCase().equals("pofadder"))
+                return new GetShippingQuoteResponse(0);
+        else
+                return new GetShippingQuoteResponse(888.88);
+    }
+
+    public enum State implements Mock.State{externalRequirementsMet, railwayOnStrike}
 	
     @Inject
     private ServiceValidationUtilities serviceValidationUtilities;
-
 }

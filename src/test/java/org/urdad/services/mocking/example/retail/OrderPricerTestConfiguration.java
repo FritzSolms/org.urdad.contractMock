@@ -6,13 +6,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.urdad.services.MethodOverrideChecker;
+import org.urdad.services.MethodOverrideCheckerBean;
 import org.urdad.services.ServiceUtilities;
 import org.urdad.services.ServiceUtilitiesBean;
+import org.urdad.services.mocking.CallLogger;
 import org.urdad.services.mocking.CallLoggingAspect;
-import org.urdad.services.mocking.example.retail.ItemPricer;
-import org.urdad.services.mocking.example.retail.ItemPricerMock;
-import org.urdad.services.mocking.example.retail.OrderPricer;
-import org.urdad.services.mocking.example.retail.OrderPricerBean;
+import org.urdad.services.mocking.SimpleCallLogger;
 import org.urdad.services.mocking.example.shipping.ShippingQuoteProvider;
 import org.urdad.services.mocking.example.shipping.ShippingQuoteProviderMock;
 import org.urdad.services.validation.beanvalidation.ServiceValidationUtilities;
@@ -69,6 +69,16 @@ public class OrderPricerTestConfiguration
     @Bean
     public ServiceUtilities serviceUtilities() {
         return new ServiceUtilitiesBean();
+    }
+
+    @Bean
+    public CallLogger callLogger() {
+        return new SimpleCallLogger();
+    }
+    
+    @Bean
+    public MethodOverrideChecker methodOverrideChecker() {
+        return new MethodOverrideCheckerBean();
     }
 
     private static final Logger logger = (Logger)LoggerFactory.getLogger(OrderPricerTestConfiguration.class);

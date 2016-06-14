@@ -18,4 +18,4 @@ import java.lang.annotation.ElementType;
 @Inherited
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Mocking {}
+public @interface MockObject {}
