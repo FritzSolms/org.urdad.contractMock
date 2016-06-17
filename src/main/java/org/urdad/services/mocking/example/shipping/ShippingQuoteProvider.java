@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import org.urdad.services.messaging.PreconditionViolation;
 import org.urdad.services.messaging.Request;
 import org.urdad.services.messaging.Response;
-import org.urdad.services.mocking.example.Address;
+import org.urdad.services.mocking.example.legalEntities.Address;
 import org.urdad.services.validation.RequestNotValidException;
 
 public interface ShippingQuoteProvider 

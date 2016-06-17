@@ -1,4 +1,5 @@
-package org.urdad.services.mocking;
+package org.urdad.services.contractTest;
+import org.urdad.services.contractTest.CallDescriptor;
 import java.lang.reflect.Method;
 import java.time.LocalDateTime;
 import javax.inject.Inject;
@@ -25,24 +26,23 @@ public class CallLoggingAspect
     public Object logCall(ProceedingJoinPoint joinPoint) throws Throwable 
     {
         LocalDateTime requestTime = LocalDateTime.now();
+        Object target = joinPoint.getTarget();
         Method method = ((MethodSignature)joinPoint.getStaticPart().getSignature()).getMethod();
         Request request = null;
         request = (Request)joinPoint.getArgs()[0];
 
         Object response = null;
         LocalDateTime responseTime;
-        try
-        {
+        try {
           response = joinPoint.proceed();
           responseTime = LocalDateTime.now();
           if (request != null)
-            callLogger.logCall(new CallDescriptor(method, requestTime, request, response, responseTime));
+            callLogger.logCall(new CallDescriptor(target, method, requestTime, request, response, responseTime));
           return response;
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             responseTime = LocalDateTime.now();
-            callLogger.logCall(new CallDescriptor(method, requestTime, request, e, responseTime));
+            callLogger.logCall(new CallDescriptor(target, method, requestTime, request, e, responseTime));
             throw e; 
         }
     }

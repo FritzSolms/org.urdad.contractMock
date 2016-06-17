@@ -1,5 +1,7 @@
-package org.urdad.services.mocking;
+package org.urdad.services.contractTest;
 
+import org.urdad.services.contractTest.CallLogger;
+import org.urdad.services.contractTest.CallDescriptor;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,17 +22,14 @@ public class SimpleCallLogger implements CallLogger
     public SimpleCallLogger() {}
 
     @Override
-    public void logCall(CallDescriptor callDescriptor) 
-    {
-            callLog.add(callDescriptor); 
+    public void logCall(CallDescriptor callDescriptor) {
+        callLog.add(callDescriptor); 
     }
-
     @Override
     public List<CallDescriptor> getCallLog() { return callLog; }
 
     @Override
-    public int getInvocationCount(Method method) 
-    {
+    public int getInvocationCount(Method method) {
         int numCalls = 0;
         for (CallDescriptor callDescriptor : callLog)
         {
@@ -39,13 +38,10 @@ public class SimpleCallLogger implements CallLogger
         }
         return numCalls;
     }
-
     @Override
-    public int getInvocationCount(Method method, Request request) 
-    {
+    public int getInvocationCount(Method method, Request request) {
         int numCalls = 0;
-        for (CallDescriptor callDescriptor : callLog)
-        {
+        for (CallDescriptor callDescriptor : callLog) {
             if (methodOverrideChecker.overrides(method, callDescriptor.getMethod())
                     && callDescriptor.getRequest().equals(request))
                         numCalls++;
@@ -53,13 +49,11 @@ public class SimpleCallLogger implements CallLogger
         return numCalls;
     }
 
-    @Inject
-    private ServiceUtilities serviceUtilities;
-    @Inject
-    MethodOverrideChecker methodOverrideChecker;
-
     @Override
     public void clearLog() { callLog.clear(); }
+
+    @Inject private ServiceUtilities serviceUtilities;
+    @Inject private MethodOverrideChecker methodOverrideChecker;
 
     private List<CallDescriptor> callLog = new LinkedList<CallDescriptor>();
 }

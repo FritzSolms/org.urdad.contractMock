@@ -17,7 +17,8 @@ public class ServiceValidationUtilities
     /** FIXME: Javadoc */
     public <T extends Request> void validateRequest(Class<T> requestType, T request) throws RequestNotValidException
     {
-        BeanValidation.ValidateObjectResponse validateObjectResponse = beanValidation.validateObject(new BeanValidation
+        BeanValidation.ValidateObjectResponse validateObjectResponse 
+                = beanValidation.validateObject(new BeanValidation
             .ValidateObjectRequest<>(requestType, request));
 
         if (!validateObjectResponse.getValid())

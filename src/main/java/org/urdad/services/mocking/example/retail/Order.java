@@ -9,7 +9,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.urdad.services.mocking.example.Person;
+import org.urdad.services.mocking.example.legalEntities.Person;
 
 public class Order implements Cloneable 
 {

@@ -5,13 +5,14 @@
  */
 package org.urdad.services.mocking.example.retail;
 
+import org.urdad.services.mocking.example.finance.PaymentMethod;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.urdad.services.messaging.Request;
 import org.urdad.services.messaging.Response;
 
-import org.urdad.services.mocking.example.finance.InsufficientFundsException;
+import org.urdad.services.mocking.example.finance.CouldNotSourceFundsException;
 import org.urdad.services.mocking.example.finance.CouldNotConnectToBankException;
 import org.urdad.services.mocking.example.finance.CouldNotProcessPaymentException;
 import org.urdad.services.mocking.example.stockManagement.InsufficientStockException;

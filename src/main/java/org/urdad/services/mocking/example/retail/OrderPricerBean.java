@@ -3,7 +3,7 @@ package org.urdad.services.mocking.example.retail;
 import java.util.Map;
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
-import org.urdad.services.mocking.example.Address;
+import org.urdad.services.mocking.example.legalEntities.Address;
 import org.urdad.services.mocking.example.shipping.ShippingQuoteProvider;
 import org.urdad.services.validation.RequestNotValidException;
 import org.urdad.services.validation.beanvalidation.ServiceValidationUtilities;

@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.urdad.services.mocking.example.retail;
+package org.urdad.services.mocking.example.finance;
+
+import org.urdad.services.mocking.example.finance.PaymentMethod;
 
 /**
  *
  * @author fritz
  */
-public abstract class PaymentMethod {
+public class AccountPayment extends PaymentMethod {
     
 }

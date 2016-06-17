@@ -64,6 +64,15 @@ public interface ServiceUtilities
 	 * have a single parameter of type Request and a return value of type Response.
 	 */
 	Method getService(Object serviceProvider, String methodName) throws NotAServiceException;
+        
+        /**
+	 * Returns the service (Method) of a specified service provider contract or class based on the service name.
+         * @param theClassOrInterface
+         * @param serviceName the name of the method representing the service whose request class is required
+         * @return  the Method for the requested service.
+         * @throws ServiceUtilities.NotAServiceException 
+         */
+        public Method getService(Class theClassOrInterface, String serviceName) throws NotAServiceException;
 	
 	/**
 	 * An exception which is thrown if a service either does not exist or does not conform 

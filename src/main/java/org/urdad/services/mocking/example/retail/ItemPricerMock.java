@@ -19,8 +19,8 @@ import org.urdad.services.validation.beanvalidation.ServiceValidationUtilities;
 public class ItemPricerMock extends BaseMock implements ItemPricer
 {
 	@Override
-	public GetItemPriceResponse getItemPrice(GetItemPriceRequest request) throws RequestNotValidException,
-		ItemNotAvailableException
+	public GetItemPriceResponse getItemPrice(GetItemPriceRequest request) 
+                throws RequestNotValidException, ItemNotAvailableException
 	{
         // Check pre-condition: Request must be valid.
         serviceValidationUtilities.validateRequest(GetItemPriceRequest.class, request);

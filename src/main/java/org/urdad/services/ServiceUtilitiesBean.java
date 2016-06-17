@@ -67,4 +67,17 @@ public class ServiceUtilitiesBean implements ServiceUtilities
         }	
         throw new NotAServiceException("Method with that name does not exist");
     }
+
+    @Override
+    public Method getService(Class theClassOrInterface, String serviceName) throws NotAServiceException {
+        for (Method service: theClassOrInterface.getMethods())
+        {
+                if (service.getName().equals(serviceName))
+                {
+                        getRequestClass(service); // Will check whether a service
+                        return service;
+                }
+        }	
+        throw new NotAServiceException("Method with that name does not exist");
+    }
 }

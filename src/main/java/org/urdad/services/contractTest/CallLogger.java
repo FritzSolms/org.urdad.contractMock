@@ -1,5 +1,6 @@
-package org.urdad.services.mocking;
+package org.urdad.services.contractTest;
 
+import org.urdad.services.contractTest.CallDescriptor;
 import java.lang.reflect.Method;
 import java.util.List;
 

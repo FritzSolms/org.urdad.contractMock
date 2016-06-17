@@ -1,4 +1,4 @@
-package org.urdad.services.mocking.example;
+package org.urdad.services.mocking.example.legalEntities;
 
 import javax.validation.constraints.NotNull;
 
