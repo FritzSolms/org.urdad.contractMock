@@ -14,7 +14,7 @@ import org.urdad.services.validation.RequestNotValidException;
 /**
  * @author fritz@solms.co.za
  */
-public class FinanceTest_mockInitializer implements EnvironmentInitializer {
+public class FinanceTest_environmentInitializer_mock implements EnvironmentInitializer {
 
     @Override
     public InitializeEnvironmentResponse initializeEnvironment
@@ -32,7 +32,6 @@ public class FinanceTest_mockInitializer implements EnvironmentInitializer {
             ((Mock)accounts).setState(PaymentGatewayMock.State.paymentFailedBecauseCouldNotCreditDestinationAccount);
         return new InitializeEnvironmentResponse();
     }
-        
     @Inject private ServiceUtilities serviceUtilities;
     @Inject private Banking banking;
     @Inject private Accounts accounts;

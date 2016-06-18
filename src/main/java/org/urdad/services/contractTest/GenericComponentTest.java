@@ -1,19 +1,12 @@
  package org.urdad.services.contractTest;
 
-import javax.inject.Inject;
-import java.lang.reflect.Method;
-import java.util.LinkedList;
 import java.util.List;
+import javax.inject.Inject;
+import java.util.LinkedList;
+import java.lang.reflect.Method;
 import org.springframework.stereotype.Service;
-import org.urdad.services.ServiceUtilities;
-import org.urdad.services.contractTest.CallDescriptor;
-import org.urdad.services.contractTest.CallLogger;
-import org.urdad.services.contractTest.ComponentTest;
-import org.urdad.services.contractTest.EnvironmentInitializer;
-import org.urdad.services.contractTest.ServiceTestData;
-import org.urdad.services.contractTest.TestCaseData;
-import org.urdad.services.contractTest.TestCaseValidator;
 import org.urdad.services.messaging.Response;
+import org.urdad.services.ServiceUtilities;
 
 /**
  * @author fritz@solms.co.za
@@ -41,16 +34,17 @@ public class GenericComponentTest implements ComponentTest
                         (new EnvironmentInitializer.InitializeEnvironmentRequest(testCaseId));
                     
                     callLogger.clearLog();
+                    System.out.println("Invoking " + serviceProvider.getClass().getName() 
+                            + "." + service.getName() + "." + testCase.getRequest());
                     Response response = (Response)service.invoke
                         (serviceProvider, testCase.getRequest());
                     List<CallDescriptor> callLog = callLogger.getCallLog();
                     
-                    TestCaseValidator.ValidateTestCaseResponse testCaseResponse
-                            = testCase.getTestCaseValidator().validateTestCase
+                    testCaseResponses.add(testCase.getTestCaseValidator().validateTestCase
                         (new TestCaseValidator.ValidateTestCaseRequest(
                           serviceProvider, testCaseId, request, request,
                           testCase.getResponse(), response, testCase.getCallRequirements(),
-                          callLog));
+                          callLog)));
                 }
                 catch (Exception e) {
                     testCaseResponses.add(new TestCaseValidator.ValidateTestCaseResponse(
@@ -64,6 +58,7 @@ public class GenericComponentTest implements ComponentTest
                   serviceProvider, null, false, 
                         TestCaseValidator.ValidationStatus.generalFailure, "", e));}
         }
+        System.out.println("******** No of test case responses: " + testCaseResponses.size());
         return new TestComponentResponse(testCaseResponses);
     }
     @Inject private CallLogger callLogger;

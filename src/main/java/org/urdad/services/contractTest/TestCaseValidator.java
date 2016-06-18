@@ -52,8 +52,8 @@ public interface TestCaseValidator {
         public ValidateTestCaseResponse(Object serviceProvider,
                 Object testCaseIdentifier, boolean pass, ValidationStatus validationStatus,
                 String message) {
-            this(serviceProvider, testCaseIdentifier, pass, validationStatus, message, null);}
-                
+            this(serviceProvider, testCaseIdentifier, pass, validationStatus, message, null);
+        }
         public ValidateTestCaseResponse(Object serviceProvider,
                 Object testCaseIdentfier, boolean pass, ValidationStatus validationStatus, 
                 String message, Exception exceptionRaised) {
@@ -64,13 +64,18 @@ public interface TestCaseValidator {
             this.message = message;
             this.exceptionRaised = exceptionRaised;
         }
-
         public boolean isPass() {return pass;}
         public ValidationStatus getValidationStatus() {return validationStatus;}
         public String getMessage() {return message;}
         public Exception getExceptionRaised() {return exceptionRaised;}
         public Object getServiceProvider() {return serviceProvider;}
         public Object getTestCaseIdentifier() {return testCaseIdentifier;}
+        
+        public String toString()
+        {
+            return "Test Case: " + serviceProvider.getClass().getName() 
+                    + " (" + testCaseIdentifier + "): " + validationStatus;
+        }
         
         private Object serviceProvider;
         private Object testCaseIdentifier;
@@ -80,6 +85,5 @@ public interface TestCaseValidator {
         private Exception exceptionRaised;
     }
     public enum ValidationStatus {
-        success, requestError, responseError, messagePatternError, generalFailure;
-    }
+        success, requestError, responseError, messagePatternError, generalFailure;}
 }

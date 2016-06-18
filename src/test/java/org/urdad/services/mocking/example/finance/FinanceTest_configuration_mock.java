@@ -12,10 +12,13 @@ import org.urdad.services.ServiceUtilitiesBean;
 import org.urdad.services.contractTest.CallLogger;
 import org.urdad.services.contractTest.CallLoggingAspect;
 import org.urdad.services.contractTest.ComponentTest;
+import org.urdad.services.contractTest.ComponentTestReporter;
 import org.urdad.services.contractTest.EnvironmentInitializer;
+import org.urdad.services.contractTest.JunitComponentTestReporter;
 import org.urdad.services.contractTest.SimpleCallLogger;
 import org.urdad.services.contractTest.SimpleMessagePatternValidator;
 import org.urdad.services.contractTest.TestCaseValidator;
+import org.urdad.services.contractTest.TestHarnessFactory;
 import org.urdad.services.mocking.example.finance.accounts.Accounts;
 import org.urdad.services.mocking.example.finance.accounts.AccountsMock;
 import org.urdad.services.mocking.example.finance.bank.Banking;
@@ -31,7 +34,7 @@ import org.urdad.validation.beanvalidation.BeanValidationBean;
  */
 @Configuration
 @EnableAspectJAutoProxy(proxyTargetClass=true)
-public class FinanceTest_configuration 
+public class FinanceTest_configuration_mock 
 {
 
     @Bean public Finance finance() {
@@ -46,12 +49,15 @@ public class FinanceTest_configuration
     @Bean public Banking banking() {
         return new BankingMock();}
 
+    @Bean public TestHarnessFactory testHarnessFactory() {
+        return new FinanceTest_testHarnessFactory();}
+    
     @Bean public EnvironmentInitializer environmentInitializer() {
-        return new FinanceTest_mockInitializer();}
+        return new FinanceTest_environmentInitializer_mock();}
     
     @Bean public TestCaseValidator testValidator() {
         return new SimpleMessagePatternValidator();}
-
+    
     @Bean public CallLoggingAspect callLoggingAspect() {
         return new CallLoggingAspect();}
 
@@ -75,4 +81,7 @@ public class FinanceTest_configuration
     
     @Bean public ComponentTest componentTest() {
         return new GenericComponentTest();}
+    
+    @Bean public ComponentTestReporter componentTestReporter() {
+        return new JunitComponentTestReporter();}
 }

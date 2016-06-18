@@ -12,18 +12,15 @@ public interface ComponentTest {
     
     public class TestComponentRequest implements Request {
 
-        public TestComponentRequest(Object serviceProvider, Object[] dependencies,
+        public TestComponentRequest(Object serviceProvider,
                 TestHarness testHarness) {
             this.serviceProvider = serviceProvider;
-            this.dependencies = dependencies;
             this.testHarness = testHarness;
         }
         public Object getServiceProvider() {return serviceProvider;}
-        public Object[] getDependencies() {return dependencies;}
         public TestHarness getTestHarness() {return testHarness;}
 
         final private Object serviceProvider;
-        final private Object[] dependencies;
         final private TestHarness testHarness;
     }
     public class TestComponentResponse implements Response {
