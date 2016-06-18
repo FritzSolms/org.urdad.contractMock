@@ -20,12 +20,23 @@ public interface ComponentTestReporter
                 testCaseResponse) {
             this.testCaseResponse = testCaseResponse;
         }
-        public TestCaseValidator.ValidateTestCaseResponse getTestCaseResponse() {
-            return testCaseResponse;}
+        public TestCaseValidator.ValidateTestCaseResponse getTestCaseResponse() 
+            {return testCaseResponse;}
         
         private TestCaseValidator.ValidateTestCaseResponse testCaseResponse;
     }
-    public class ReportTestCaseResponse implements Response {}
+    public class ReportTestCaseResponse implements Response 
+    {
+        public ReportTestCaseResponse(boolean pass, String textReport) {
+            this.textReport = textReport;
+            this.pass = pass;
+        }
+        public String getTextReport() {return textReport;}
+        public boolean isPass() {return pass;}
+        
+        private String textReport;
+        private boolean pass;
+    }
 
     public class ReportComponentTestRequest implements Request {
     public ReportComponentTestRequest
@@ -35,5 +46,16 @@ public interface ComponentTestReporter
             return testCaseResponses;}
         private List<TestCaseValidator.ValidateTestCaseResponse> testCaseResponses;
     }
-    public class ReportComponentTestResponse implements Response {}
+    public class ReportComponentTestResponse implements Response 
+    {
+        public ReportComponentTestResponse(boolean pass, String textReport) {
+            this.textReport = textReport;
+            this.pass = pass;
+        }
+        public String getTextReport() {return textReport;}
+        public boolean isPass() {return pass;}
+        
+        private String textReport;
+        private boolean pass;
+    }
 }

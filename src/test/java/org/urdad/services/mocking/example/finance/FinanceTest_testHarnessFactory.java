@@ -7,7 +7,6 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import org.junit.Before;
 import org.springframework.stereotype.Service;
 import org.urdad.services.ServiceUtilities;
 import org.urdad.services.contractTest.CallRequirement;
@@ -24,7 +23,7 @@ import org.urdad.services.mocking.example.legalEntities.Address;
 import org.urdad.services.mocking.example.legalEntities.Person;
 
 /**
- * @author fritz
+ * @author fritz@solms.co.za
  */
 @Service
 @Singleton

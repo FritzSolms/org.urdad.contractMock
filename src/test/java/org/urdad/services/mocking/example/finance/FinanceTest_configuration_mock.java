@@ -14,7 +14,7 @@ import org.urdad.services.contractTest.CallLoggingAspect;
 import org.urdad.services.contractTest.ComponentTest;
 import org.urdad.services.contractTest.ComponentTestReporter;
 import org.urdad.services.contractTest.EnvironmentInitializer;
-import org.urdad.services.contractTest.JunitComponentTestReporter;
+import org.urdad.services.contractTest.DefaultComponentTestReporter;
 import org.urdad.services.contractTest.SimpleCallLogger;
 import org.urdad.services.contractTest.SimpleMessagePatternValidator;
 import org.urdad.services.contractTest.TestCaseValidator;
@@ -83,5 +83,5 @@ public class FinanceTest_configuration_mock
         return new GenericComponentTest();}
     
     @Bean public ComponentTestReporter componentTestReporter() {
-        return new JunitComponentTestReporter();}
+        return new DefaultComponentTestReporter();}
 }

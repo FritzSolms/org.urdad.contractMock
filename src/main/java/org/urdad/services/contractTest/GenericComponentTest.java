@@ -34,8 +34,6 @@ public class GenericComponentTest implements ComponentTest
                         (new EnvironmentInitializer.InitializeEnvironmentRequest(testCaseId));
                     
                     callLogger.clearLog();
-                    System.out.println("Invoking " + serviceProvider.getClass().getName() 
-                            + "." + service.getName() + "." + testCase.getRequest());
                     Response response = (Response)service.invoke
                         (serviceProvider, testCase.getRequest());
                     List<CallDescriptor> callLog = callLogger.getCallLog();
@@ -58,7 +56,6 @@ public class GenericComponentTest implements ComponentTest
                   serviceProvider, null, false, 
                         TestCaseValidator.ValidationStatus.generalFailure, "", e));}
         }
-        System.out.println("******** No of test case responses: " + testCaseResponses.size());
         return new TestComponentResponse(testCaseResponses);
     }
     @Inject private CallLogger callLogger;

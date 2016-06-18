@@ -1,6 +1,7 @@
 package org.urdad.services.mocking.example.finance;
 
 import javax.inject.Inject;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,15 +20,18 @@ public class FinanceTest {
     @Test
     public void testComponentAgainstContract() throws Exception
     {
-        componentTestReporter.reportComponentTest
+        ComponentTestReporter.ReportComponentTestResponse componentTestResult
+                = componentTestReporter.reportComponentTest
             (new ComponentTestReporter.ReportComponentTestRequest
             (componentTest.testComponent
             (new ComponentTest.TestComponentRequest
-            (finance, testHarnessFactory.provideTestHarness
+            (serviceProvider, testHarnessFactory.provideTestHarness
             (new TestHarnessFactory.ProvideTestHarnessRequest()
               ).getTestHarness())).getTestCaseResponses()));
+        if (!componentTestResult.isPass())
+            Assert.fail(componentTestResult.getTextReport());
     }
-    @Inject private Finance finance;
+    @Inject private Finance serviceProvider;
     @Inject private ComponentTest componentTest;
     @Inject private TestHarnessFactory testHarnessFactory;
     @Inject private ComponentTestReporter componentTestReporter;

@@ -35,8 +35,6 @@ public class FinanceMock extends BaseMock implements Finance {
             throws RequestNotValidException, CouldNotProcessPaymentException 
     {
         serviceValidationUtilities.validateRequest(ProcessPaymentRequest.class, request);
-        System.out.println("#### request " + request);
-        System.out.println("#### paymentMethod " + request.getPaymentMethod());
         if (CreditCardPayment.class.isAssignableFrom(request.getPaymentMethod().getClass()))
         {
             CreditCardPayment cardPayment = (CreditCardPayment)request.getPaymentMethod();
