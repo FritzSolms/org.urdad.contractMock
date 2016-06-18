@@ -1,7 +1,7 @@
 package org.urdad.services.mocking.example.finance.bank;
 
 /**
- * @author fritz
+ * @author fritz@solms.co.za
  */
 public class BankAccountDetails {
 

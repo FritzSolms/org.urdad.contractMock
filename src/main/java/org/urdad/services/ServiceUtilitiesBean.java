@@ -1,6 +1,7 @@
 package org.urdad.services;
 
 import java.lang.reflect.Method;
+import javax.inject.Singleton;
 
 import org.springframework.stereotype.Service;
 import org.urdad.services.messaging.Request;
@@ -13,6 +14,7 @@ import org.urdad.services.messaging.Response;
  * @see ServiceUtilities
  */
 @Service
+@Singleton
 public class ServiceUtilitiesBean implements ServiceUtilities 
 {
     @Override

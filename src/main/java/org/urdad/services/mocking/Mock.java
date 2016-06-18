@@ -25,5 +25,5 @@ public interface Mock
 	
 	public interface State{};
 	
-	public class InvalidStateException extends Exception {};
+	public class InvalidStateException extends RuntimeException {};
 }

@@ -13,7 +13,7 @@ public interface TestCaseValidator {
         
     public class ValidateTestCaseRequest
     {
-        public ValidateTestCaseRequest(Class serviceProvider, String testCaseIdentifier,
+        public ValidateTestCaseRequest(Object serviceProvider, Object testCaseIdentifier,
                 Request requiredRequest, Request madeRequest, Response requiredResponse, 
                 Response madeResponse, List<CallRequirement> callRequirements, 
                 List<CallDescriptor> callLog) {
@@ -26,8 +26,8 @@ public interface TestCaseValidator {
             this.callRequirements = callRequirements;
             this.callLog = callLog;
         }
-        public Class getServiceProvider() {return serviceProvider;}
-        public String getTestCaseIdentifier() {return testCaseIdentifier;}
+        public Object getServiceProvider() {return serviceProvider;}
+        public Object getTestCaseIdentifier() {return testCaseIdentifier;}
         public Request getRequiredRequest() {return requiredRequest;}
         public Request getMadeRequest() {return madeRequest;}
         public Response getRequiredResponse() {return requiredResponse;}
@@ -35,8 +35,8 @@ public interface TestCaseValidator {
         public List<CallRequirement> getCallRequirements() {return callRequirements;}
         public List<CallDescriptor> getCallLog() {return callLog;}
         
-        private Class serviceProvider;
-        private String testCaseIdentifier;
+        private Object serviceProvider;
+        private Object testCaseIdentifier;
         private Request requiredRequest, madeRequest;
         private Response requiredResponse, madeResponse;
         private List<CallRequirement> callRequirements; 
@@ -45,17 +45,17 @@ public interface TestCaseValidator {
     
     public class ValidateTestCaseResponse
     {
-        public ValidateTestCaseResponse(Class serviceProvider,
-                String testCaseIdentifier, boolean pass, ValidationStatus validationStatus) {
+        public ValidateTestCaseResponse(Object serviceProvider,
+                Object testCaseIdentifier, boolean pass, ValidationStatus validationStatus) {
             this(serviceProvider, testCaseIdentifier, pass, validationStatus, null);
         }
-        public ValidateTestCaseResponse(Class serviceProvider,
-                String testCaseIdentifier, boolean pass, ValidationStatus validationStatus,
+        public ValidateTestCaseResponse(Object serviceProvider,
+                Object testCaseIdentifier, boolean pass, ValidationStatus validationStatus,
                 String message) {
             this(serviceProvider, testCaseIdentifier, pass, validationStatus, message, null);}
                 
-        public ValidateTestCaseResponse(Class serviceProvider,
-                String testCaseIdentfier, boolean pass, ValidationStatus validationStatus, 
+        public ValidateTestCaseResponse(Object serviceProvider,
+                Object testCaseIdentfier, boolean pass, ValidationStatus validationStatus, 
                 String message, Exception exceptionRaised) {
             this.serviceProvider = serviceProvider;
             this.testCaseIdentifier = testCaseIdentfier;
@@ -69,11 +69,11 @@ public interface TestCaseValidator {
         public ValidationStatus getValidationStatus() {return validationStatus;}
         public String getMessage() {return message;}
         public Exception getExceptionRaised() {return exceptionRaised;}
-        public Class getServiceProvider() {return serviceProvider;}
-        public String getTestCaseIdentifier() {return testCaseIdentifier;}
+        public Object getServiceProvider() {return serviceProvider;}
+        public Object getTestCaseIdentifier() {return testCaseIdentifier;}
         
-        private Class serviceProvider;
-        private String testCaseIdentifier;
+        private Object serviceProvider;
+        private Object testCaseIdentifier;
         private boolean pass;
         private ValidationStatus validationStatus;
         private String message;

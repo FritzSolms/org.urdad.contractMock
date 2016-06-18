@@ -8,7 +8,7 @@ import org.urdad.services.messaging.Response;
  * @author fritz@solms.co.za
  */
 public class TestCaseData {
-    public TestCaseData(String testCaseIdentifier,
+    public TestCaseData(Object testCaseIdentifier,
             EnvironmentInitializer environmentInitializer, 
             Request request, Response response, 
             List<CallRequirement> messageExchangeList, 
@@ -25,13 +25,13 @@ public class TestCaseData {
     public EnvironmentInitializer getEnvironmentInitializer() {
         return environmentInitializer;
     }
-    public String getTestCaseIdentifier() {return testCaseIdentifier;}
+    public Object getTestCaseIdentifier() {return testCaseIdentifier;}
     public Request getRequest() {return request;}
     public Response getResponse() {return response;}
     public List<CallRequirement> getCallRequirements() {return callRequirements;}
     public TestCaseValidator getTestCaseValidator() {return testCaseValidator;}
     
-    private String testCaseIdentifier;
+    private Object testCaseIdentifier;
     private Request request;
     private Response response;
     private List<CallRequirement> callRequirements;

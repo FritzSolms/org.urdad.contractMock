@@ -10,13 +10,14 @@ import org.urdad.services.messaging.Request;
 import org.urdad.services.messaging.Response;
 import org.urdad.services.mocking.example.legalEntities.Person;
 import org.urdad.services.mocking.example.finance.CouldNotSourceFundsException;
+import org.urdad.services.validation.RequestNotValidException;
 
 /**
  * @author fritz@solms.co.za
  */
 public interface Accounts {
     public DebitAccountResponse debitAccount(DebitAccountRequest request)
-            throws CouldNotSourceFundsException;
+            throws RequestNotValidException, CouldNotSourceFundsException;
     public static class DebitAccountRequest implements Request {
 
         public Person getPayer() {return payer;}

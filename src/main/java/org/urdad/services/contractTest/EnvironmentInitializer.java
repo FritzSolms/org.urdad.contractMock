@@ -22,14 +22,14 @@ public interface EnvironmentInitializer {
         
     public class InitializeEnvironmentRequest implements Request {
 
-        public InitializeEnvironmentRequest(String testCaseIdentifier) {
+        public InitializeEnvironmentRequest(Object testCaseIdentifier) {
             this.testCaseIdentifier = testCaseIdentifier;
         }
 
-        public String getTestCaseIdentifier() {
+        public Object getTestCaseIdentifier() {
             return testCaseIdentifier;
         }
-        private String testCaseIdentifier;
+        private Object testCaseIdentifier;
     }    
     public class InitializeEnvironmentResponse implements Response {
         

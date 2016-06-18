@@ -13,5 +13,5 @@ public class CreditCardPayment extends PaymentMethod {
         this.cardDetails = cardDetails.clone();}
    public CreditCardDetails getCardDetails() {return cardDetails.clone();}
     
-   @NotNull @Valid private CreditCardDetails cardDetails;
+   @NotNull @Valid private final CreditCardDetails cardDetails;
 }

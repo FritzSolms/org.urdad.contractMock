@@ -2,6 +2,7 @@ package org.urdad.services.mocking.example.finance;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import org.urdad.services.contract.ServiceProviderContract;
 import org.urdad.services.messaging.Request;
 import org.urdad.services.messaging.Response;
 import org.urdad.services.mocking.example.legalEntities.Person;
@@ -10,6 +11,7 @@ import org.urdad.services.validation.RequestNotValidException;
 /**
  * @author fritz@solms.co.za
  */
+@ServiceProviderContract
 public interface Finance {
     public ProcessPaymentResponse processPayment(ProcessPaymentRequest request)
             throws RequestNotValidException, CouldNotProcessPaymentException;

@@ -1,6 +1,7 @@
 package org.urdad.services.mocking.example.finance.bank;
 
 import javax.inject.Inject;
+import org.springframework.stereotype.Service;
 import org.urdad.services.mocking.BaseMock;
 import org.urdad.services.validation.RequestNotValidException;
 import org.urdad.services.validation.beanvalidation.ServiceValidationUtilities;
@@ -8,6 +9,7 @@ import org.urdad.services.validation.beanvalidation.ServiceValidationUtilities;
 /**
  * @author fritz@solms.co.za
  */
+@Service
 public class BankingMock extends BaseMock implements Banking {
 
     /**
@@ -20,7 +22,7 @@ public class BankingMock extends BaseMock implements Banking {
      * </ul>
      */
     @Override
-    public GetBankAccountDetailsResponse getBankAcountDetails
+    public GetBankAccountDetailsResponse getBankAccountDetails
         (GetBankAccountDetailsRequest request) 
                 throws RequestNotValidException, NoBankAccountAvailableException {
         // Check pre-condition: Request must be valid.

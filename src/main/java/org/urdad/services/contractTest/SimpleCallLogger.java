@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
 import javax.inject.Inject;
+import org.springframework.stereotype.Service;
 
 import org.urdad.services.MethodOverrideChecker;
 import org.urdad.services.ServiceUtilities;
@@ -17,6 +18,7 @@ import org.urdad.services.messaging.Request;
  * @author fritz@solms.co.za
  *
  */
+@Service
 public class SimpleCallLogger implements CallLogger 
 {
     public SimpleCallLogger() {}

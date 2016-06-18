@@ -1,15 +1,24 @@
-package org.urdad.services.contractTest;
+ package org.urdad.services.contractTest;
 
 import javax.inject.Inject;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
+import org.springframework.stereotype.Service;
 import org.urdad.services.ServiceUtilities;
+import org.urdad.services.contractTest.CallDescriptor;
+import org.urdad.services.contractTest.CallLogger;
+import org.urdad.services.contractTest.ComponentTest;
+import org.urdad.services.contractTest.EnvironmentInitializer;
+import org.urdad.services.contractTest.ServiceTestData;
+import org.urdad.services.contractTest.TestCaseData;
+import org.urdad.services.contractTest.TestCaseValidator;
 import org.urdad.services.messaging.Response;
 
 /**
  * @author fritz@solms.co.za
  */
+@Service
 public class GenericComponentTest implements ComponentTest
 {
     @Override
@@ -17,16 +26,16 @@ public class GenericComponentTest implements ComponentTest
     {
         List<TestCaseValidator.ValidateTestCaseResponse> testCaseResponses
                 = new LinkedList();
-        Class serviceProvider = request.getServiceProvider();
+        Object serviceProvider = request.getServiceProvider();
         for (ServiceTestData serviceTest:request.getTestHarness().getServiceTests())
         {
-            try
-            {
+          try
+          {
             Method service = serviceUtilities.getService
                 (serviceProvider, serviceTest.getServiceName());
             for (TestCaseData testCase:serviceTest.getTestCases()) 
             {
-                String testCaseId = testCase.getTestCaseIdentifier();
+                Object testCaseId = testCase.getTestCaseIdentifier();
                 try {
                     testCase.getEnvironmentInitializer().initializeEnvironment
                         (new EnvironmentInitializer.InitializeEnvironmentRequest(testCaseId));
@@ -53,8 +62,7 @@ public class GenericComponentTest implements ComponentTest
             catch (ServiceUtilities.NotAServiceException e) {
                 testCaseResponses.add(new TestCaseValidator.ValidateTestCaseResponse(
                   serviceProvider, null, false, 
-                        TestCaseValidator.ValidationStatus.generalFailure, "", e));
-            }
+                        TestCaseValidator.ValidationStatus.generalFailure, "", e));}
         }
         return new TestComponentResponse(testCaseResponses);
     }

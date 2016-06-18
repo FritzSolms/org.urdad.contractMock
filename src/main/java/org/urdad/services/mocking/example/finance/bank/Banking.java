@@ -18,7 +18,7 @@ public interface Banking {
      * @throws NoBankAccountAvailableException if no bank account details 
      * available for the entity.
      */
-    public GetBankAccountDetailsResponse getBankAcountDetails
+    public GetBankAccountDetailsResponse getBankAccountDetails
         (GetBankAccountDetailsRequest request)
                 throws RequestNotValidException, NoBankAccountAvailableException;        
         

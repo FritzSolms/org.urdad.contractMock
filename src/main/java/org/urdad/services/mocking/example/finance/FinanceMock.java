@@ -2,6 +2,7 @@ package org.urdad.services.mocking.example.finance;
 
 import java.time.LocalDateTime;
 import javax.inject.Inject;
+import org.springframework.stereotype.Service;
 import org.urdad.services.ServiceUtilities;
 import org.urdad.services.mocking.BaseMock;
 import org.urdad.services.contractTest.CallDescriptor;
@@ -18,6 +19,7 @@ import org.urdad.services.validation.beanvalidation.ServiceValidationUtilities;
 /**
  * @author fritz@solms.co.za
  */
+@Service
 public class FinanceMock extends BaseMock implements Finance {
     /**
      * Throws {@link CouldNotProcessPaymentException} if 
