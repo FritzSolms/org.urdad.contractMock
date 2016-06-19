@@ -1,5 +1,6 @@
 package org.urdad.services.contractTest;
 
+import org.urdad.services.contractTest.testData.TestHarness;
 import java.util.List;
 import org.urdad.services.messaging.Request;
 import org.urdad.services.messaging.Response;

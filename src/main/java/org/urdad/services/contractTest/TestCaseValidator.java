@@ -1,5 +1,7 @@
 package org.urdad.services.contractTest;
 
+import org.urdad.services.contractTest.callLogging.CallDescriptor;
+import org.urdad.services.contractTest.callLogging.CallRequirement;
 import java.util.List;
 import org.urdad.services.messaging.Request;
 import org.urdad.services.messaging.Response;

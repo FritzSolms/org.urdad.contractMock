@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.urdad.services.ServiceUtilities;
-import org.urdad.services.contractTest.CallLogger;
+import org.urdad.services.contractTest.callLogging.CallLogger;
 import org.urdad.services.mocking.example.legalEntities.Address;
 import org.urdad.services.mocking.example.legalEntities.Person;
 import org.urdad.services.mocking.example.shipping.ShippingQuoteProvider;

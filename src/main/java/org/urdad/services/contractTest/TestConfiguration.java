@@ -1,5 +1,10 @@
 package org.urdad.services.contractTest;
 
+import org.urdad.services.contractTest.reporting.DefaultComponentTestReporter;
+import org.urdad.services.contractTest.reporting.ComponentTestReporter;
+import org.urdad.services.contractTest.callLogging.SimpleCallLogger;
+import org.urdad.services.contractTest.callLogging.CallLogger;
+import org.urdad.services.contractTest.callLogging.CallLoggingAspect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -13,16 +18,12 @@ import org.urdad.validation.beanvalidation.BeanValidation;
 import org.urdad.validation.beanvalidation.BeanValidationBean;
 
 /**
- *
  * @author fritz@solms.co.za
  */
 @Configuration
 @EnableAspectJAutoProxy(proxyTargetClass=true)
-public class UnitTestConfiguration {
-    
-    @Bean public TestCaseValidator testValidator() {
-        return new SimpleMessagePatternValidator();}
-
+public class TestConfiguration 
+{
     @Bean public CallLoggingAspect callLoggingAspect() {
         return new CallLoggingAspect();}
 
@@ -44,4 +45,9 @@ public class UnitTestConfiguration {
     @Bean public MethodOverrideChecker methodOverrideChecker() {
         return new MethodOverrideCheckerBean();}
     
+    @Bean public ComponentTest componentTest() {
+        return new GenericComponentTest();}
+    
+    @Bean public ComponentTestReporter componentTestReporter() {
+        return new DefaultComponentTestReporter();}
 }

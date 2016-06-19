@@ -1,4 +1,4 @@
-package org.urdad.services.contractTest;
+package org.urdad.services.contractTest.callLogging;
 
 import java.lang.reflect.Method;
 import javax.validation.Valid;

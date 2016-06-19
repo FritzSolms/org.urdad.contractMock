@@ -1,4 +1,7 @@
-package org.urdad.services.contractTest;
+package org.urdad.services.contractTest.reporting;
+
+import org.urdad.services.contractTest.TestCaseValidator;
+import org.urdad.services.contractTest.reporting.ComponentTestReporter;
 
 /**
  * @author fritz@solms.co.za

@@ -1,5 +1,6 @@
-package org.urdad.services.contractTest;
+package org.urdad.services.contractTest.testData;
 
+import org.urdad.services.contractTest.testData.ServiceTestData;
 import java.util.List;
 import java.util.Map;
 

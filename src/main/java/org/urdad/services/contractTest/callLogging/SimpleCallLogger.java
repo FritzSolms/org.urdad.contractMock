@@ -1,7 +1,7 @@
-package org.urdad.services.contractTest;
+package org.urdad.services.contractTest.callLogging;
 
-import org.urdad.services.contractTest.CallLogger;
-import org.urdad.services.contractTest.CallDescriptor;
+import org.urdad.services.contractTest.callLogging.CallLogger;
+import org.urdad.services.contractTest.callLogging.CallDescriptor;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.urdad.services.contractTest;
+package org.urdad.services.contractTest.testData;
 
 import java.util.List;
 

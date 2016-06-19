@@ -1,5 +1,6 @@
-package org.urdad.services.contractTest;
+package org.urdad.services.contractTest.testData;
 
+import org.urdad.services.contractTest.testData.TestHarness;
 import org.springframework.stereotype.Service;
 import org.urdad.services.messaging.Request;
 import org.urdad.services.messaging.Response;

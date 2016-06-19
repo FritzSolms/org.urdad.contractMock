@@ -1,6 +1,7 @@
-package org.urdad.services.contractTest;
+package org.urdad.services.contractTest.reporting;
 
 import java.util.List;
+import org.urdad.services.contractTest.TestCaseValidator;
 import org.urdad.services.messaging.Request;
 import org.urdad.services.messaging.Response;
 

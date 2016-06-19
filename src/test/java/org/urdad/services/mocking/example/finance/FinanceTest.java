@@ -7,15 +7,15 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.urdad.services.contractTest.ComponentTest;
-import org.urdad.services.contractTest.ComponentTestReporter;
-import org.urdad.services.contractTest.TestHarnessFactory;
+import org.urdad.services.contractTest.reporting.ComponentTestReporter;
+import org.urdad.services.contractTest.testData.TestHarnessFactory;
 
 /**
  * Can be executed in different test harnesses for unit and integration testing
  * @author fritz@solms.co.za
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {FinanceTest_configuration_mock.class})
+@ContextConfiguration(classes = {FinanceTest_componentConfiguration_mock.class})
 public class FinanceTest {
     @Test
     public void testComponentAgainstContract() throws Exception

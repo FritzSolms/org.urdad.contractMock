@@ -1,5 +1,5 @@
-package org.urdad.services.contractTest;
-import org.urdad.services.contractTest.CallDescriptor;
+package org.urdad.services.contractTest.callLogging;
+import org.urdad.services.contractTest.callLogging.CallDescriptor;
 import java.lang.reflect.Method;
 import java.time.LocalDateTime;
 import javax.inject.Inject;
